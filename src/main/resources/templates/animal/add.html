@@ -9,6 +9,12 @@
 
 <form method="post">
     <input type="text" name="animalName" />
+    <select>
+    <option th:each="type : ${T(com.sarahhanley.iFoster.models.AnimalType).values()}"
+            th:value="${{AnimalType}}"
+            th:text="${AnimalType}">
+    </option>
+</select>
     <input type="submit" value="Add Animal" />
 
 </form>
