@@ -3,13 +3,13 @@
 <head th:replace="fragments :: head"></head>
 
 <body>
-    <h1 th:text="${title}">Default Title</h1>
+    <h1 th:text="${title}">Foster Animals</h1>
     <nav th:replace="fragments :: navigation"></nav>
 
     <p th:unless="${animals} and ${animals.size()}">no animals!</p>
 
 <ul>
-    <li th:each="animal : ${animals}" th:text="${animal}"></li>
+    <li th:each="animal : ${animals}" th:text="${animal.name}"></li>
 </ul>
 </body>
 </html>
