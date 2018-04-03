@@ -35,7 +35,7 @@ public class Animal {
 
     private Date birthdate;
     private String origin;
-    private AnimalType animalType;
+    private Species species;
 
     public Animal() {}
 
