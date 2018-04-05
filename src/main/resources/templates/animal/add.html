@@ -3,19 +3,56 @@
 <head th:replace="fragments :: head"></head>
 
 <body>
-<h1 th:text="${title}">Default Title</h1>
-<nav th:replace="fragments :: navigation"></nav>
+<div class="container">
+    <nav th:replace="fragments :: navigation"></nav>
+    <div class="page-header">
+    <h1 th:text="${title}">Default Title</h1>
+    </div>
 
+<form method="post" th:object="${animal}">
+    <div>
+    <label th:for="name">Animal Name</label>
+    <input type="text" th:field="*{name}" />
+    </div>
 
-<form method="post">
-    <input type="text" name="animalName" />
-
-    <select id="species" class="form-control" th:field="*{species}">
-        <option value="" selected="selected">Species</option>
-        <option th:each="species : ${T(com.sarahhanley.iFoster.models.Species).values()}" th:value="${species}" th:text="${species.name}">Species</option>
+    <!--TODO: FIGURE OUT WHY THIS IS BROKEN!!
+     <div>
+    <select th:field="*{species}">
+        <option th:each="species : ${speciesEnums}"
+                th:text="${species.name}"
+                th:value=${species}">Species</option>
     </select>
-    <input type="submit" value="Add Animal" />
+    </div>
+    -->
+     <div class="dropdown">
+    <select th:field="*{gender}">
+        <option th:each="gender : ${genders}"
+                th:text="${gender.name}"
+                th:value="${gender}">Gender</option>
+    </select>
+    </div>
 
+     <div>
+    <Label th:for="altered">Spayed/Nutered</Label>
+    <input type="checkbox" th:field="*{altered}"/>
+    </div>
+
+     <div>
+         <label th:for="origin">Animal Origin</label>
+         <input type="text" th:field="*{origin}" />
+     </div>
+
+     <div>
+         <label th:for="requirements">Requirements</label>
+         <div th:each="requirement : ${requirementList}">
+             <input type="checkbox" th:field="*{requirements}" th:value="|${requirement.name}" />
+         </div>
+     </div>
+
+        <div>
+    <input type="submit" value="Add Animal" />
+    </div>
 </form>
+</div>
 </body>
 </html>

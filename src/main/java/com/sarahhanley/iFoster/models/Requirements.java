@@ -7,7 +7,7 @@ import javax.persistence.ManyToMany;
 import java.util.List;
 
 @Entity
-public class Preference {
+public class Requirements {
 
     @Id
     @GeneratedValue
@@ -24,9 +24,9 @@ public class Preference {
     @ManyToMany
     private List<Human> humans;
 
-    public Preference() {}
+    public Requirements() {}
 
-    public Preference(boolean catFriendly, boolean kidFriendly, boolean dogFriendly) {
+    public Requirements(boolean catFriendly, boolean kidFriendly, boolean dogFriendly) {
         this.catFriendly = catFriendly;
         this.kidFriendly = kidFriendly;
         this.dogFriendly = dogFriendly;

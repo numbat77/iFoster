@@ -13,6 +13,7 @@ public class Human {
     private String firstName;
     private String lastName;
     private int phoneNumber;
+    private GenderEnum gender;
 
     @ManyToOne
     private Address address;
@@ -21,7 +22,7 @@ public class Human {
     private boolean adopter;
 
     @ManyToMany(mappedBy = "humans")
-    private List<Preference> prefrences;
+    private List<Requirements> prefrences;
 
     @ManyToMany
     private List<Animal> ownedAnimals;
@@ -59,6 +60,14 @@ public class Human {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public GenderEnum getGender() {
+        return gender;
+    }
+
+    public void setGender(GenderEnum gender) {
+        this.gender = gender;
     }
 
     public int getPhoneNumber() {

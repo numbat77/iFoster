@@ -15,7 +15,7 @@ public class Animal {
 
     @NotNull
     @Size(min=3, max=50)
-    private String animal_name;
+    private String name;
     private boolean adopted;
 
     @ManyToMany(mappedBy = "ownedAnimals")
@@ -27,20 +27,28 @@ public class Animal {
     @ManyToMany(mappedBy = "pastFosterAnimals")
     private List<Human> pastFosters;
 
-    private Gender gender;
+    private GenderEnum gender;
     private boolean altered;
 
     @ManyToMany(mappedBy = "animals")
-    private List<Preference> prefrences;
+    private List<Requirements> requirements;
 
-    private Date birthdate;
+    private Date birthday;
     private String origin;
-    private Species species;
+    private SpeciesEnum species;
 
     public Animal() {}
 
-    public Animal(String animal_name) {
-        this.animal_name = animal_name;
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    public SpeciesEnum getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(SpeciesEnum species) {
+        this.species = species;
     }
 
     public int getId() {
@@ -52,11 +60,11 @@ public class Animal {
     }
 
     public String getName() {
-        return animal_name;
+        return name;
     }
 
     public void setName(String name) {
-        this.animal_name = name;
+        this.name = name;
     }
 
     public boolean isAdopted() {
@@ -67,11 +75,11 @@ public class Animal {
         this.adopted = adopted;
     }
 
-    public Gender getGender() {
+    public GenderEnum getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(GenderEnum gender) {
         this.gender = gender;
     }
 
@@ -84,11 +92,11 @@ public class Animal {
     }
 
     public Date getBirthdate() {
-        return birthdate;
+        return birthday;
     }
 
     public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+        this.birthday = birthdate;
     }
 
     public String getOrigin() {
