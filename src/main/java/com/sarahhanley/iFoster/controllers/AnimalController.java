@@ -1,7 +1,8 @@
 package com.sarahhanley.iFoster.controllers;
 
 import com.sarahhanley.iFoster.models.Animal;
-import com.sarahhanley.iFoster.models.SpeciesEnum;
+import com.sarahhanley.iFoster.models.GenderTypes;
+import com.sarahhanley.iFoster.models.SpeciesType;
 import com.sarahhanley.iFoster.models.data.AnimalDAO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,8 @@ public class AnimalController {
     public String displayAddAnimalForm(Model model){
         model.addAttribute("title", "Add Animal");
         model.addAttribute(new Animal());
-        model.addAttribute("speciesEnums", SpeciesEnum.values());
+        model.addAttribute("speciesTypes", SpeciesType.values());
+        model.addAttribute("genderTypes", GenderTypes.values());
         return "animal/add";
     }
 

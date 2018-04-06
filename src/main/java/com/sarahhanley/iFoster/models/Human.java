@@ -13,7 +13,7 @@ public class Human {
     private String firstName;
     private String lastName;
     private int phoneNumber;
-    private GenderEnum gender;
+    private GenderTypes gender;
 
     @ManyToOne
     private Address address;
@@ -62,11 +62,11 @@ public class Human {
         this.lastName = lastName;
     }
 
-    public GenderEnum getGender() {
+    public GenderTypes getGender() {
         return gender;
     }
 
-    public void setGender(GenderEnum gender) {
+    public void setGender(GenderTypes gender) {
         this.gender = gender;
     }
 

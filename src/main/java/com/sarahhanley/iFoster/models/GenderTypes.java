@@ -1,18 +1,17 @@
 package com.sarahhanley.iFoster.models;
 
-public enum SpeciesEnum {
-    FELINE ("Feline"),
-    CANINE ("Canine"),
+public enum GenderTypes {
+    FEMALE ("Female"),
+    MALE ("Male"),
     OTHER ("Other");
 
-    private final String name;
+    final private String name;
 
-    SpeciesEnum(String name) {
+    GenderTypes(String name) {
         this.name = name;
     }
 
     public String getName() {
         return name;
     }
-
 }

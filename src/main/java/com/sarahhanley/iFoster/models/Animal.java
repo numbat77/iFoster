@@ -27,7 +27,7 @@ public class Animal {
     @ManyToMany(mappedBy = "pastFosterAnimals")
     private List<Human> pastFosters;
 
-    private GenderEnum gender;
+    private GenderTypes gender;
     private boolean altered;
 
     @ManyToMany(mappedBy = "animals")
@@ -35,20 +35,12 @@ public class Animal {
 
     private Date birthday;
     private String origin;
-    private SpeciesEnum species;
+    private SpeciesType species;
 
     public Animal() {}
 
     public Animal(String name) {
         this.name = name;
-    }
-
-    public SpeciesEnum getSpecies() {
-        return species;
-    }
-
-    public void setSpecies(SpeciesEnum species) {
-        this.species = species;
     }
 
     public int getId() {
@@ -75,11 +67,11 @@ public class Animal {
         this.adopted = adopted;
     }
 
-    public GenderEnum getGender() {
+    public GenderTypes getGender() {
         return gender;
     }
 
-    public void setGender(GenderEnum gender) {
+    public void setGender(GenderTypes gender) {
         this.gender = gender;
     }
 
@@ -107,4 +99,11 @@ public class Animal {
         this.origin = origin;
     }
 
+    public SpeciesType getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(SpeciesType species) {
+        this.species = species;
+    }
 }
