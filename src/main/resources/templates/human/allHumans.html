@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<div class="container">
+    <nav th:replace="fragments :: navigation"></nav>
+    <div class="page-header">
+    <h1 th:text="${title}">Default Title</h1>
+    </div>
+
+    <p th:unless="${fosterFamilies} and ${fosterFamilies.size()}">NO Foster Families!</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Foster Animal(s)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="human : ${humans}">
+            <td><a th:href=" '/human/humanProfile/' + ${human.id}" th:text="${human.firstName} + ' ' + ${human.lastName}" >name</a></td>
+            <td th:text="${human.email}">email</td>
+        <td th:text="${human.phoneNumber}">phone</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
