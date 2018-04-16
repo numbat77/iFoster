@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<div class="container">
+    <nav th:replace="fragments :: navigation"></nav>
+    <div class="page-header">
+        <h1 th:text="${title}">Default Title</h1>
+    </div>
+
+    <form method="post" th:object="${human}">
+        <div class="form-group">
+            <label th:for="firstName">First Name</label>
+            <input type="text" th:field="*{firstName}" />
+
+            <label th:for="lastName">Last Name</label>
+            <input type="text" th:field="*{lastName}" />
+
+            <label th:for="phoneNumber">Phone</label>
+            <input type="text" th:field="*{phoneNumber}" />
+
+            <label th:for="email">Email</label>
+            <input type="text" th:field="*{Email}" />
+        </div>
+
+        <div class="form-group">
+            <label th:for="gender">Gender</label>
+            <select th:field="*{gender}">
+                <option th:each="genderType : ${genderTypes}"
+                        th:text="${genderType.name}"
+                        th:value="${genderType}">Gender</option>
+            </select>
+        </div>
+
+        <div class="form-group" data-provide="datepicker" data-date-format="mm-dd-yyyy">
+            <label th:for="birthday">Birthday </label>
+            <input type="date" th:field="*{birthday}" class="input-group-date">
+        </div>
+
+        <div class="form-group">
+            <label th:for="requirements">Requirements</label>
+            <div th:each="requirement : ${requirementList}">
+                <input type="checkbox" th:field="*{requirements}" th:value="|${requirement.name}" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Add Human" />
+        </div>
+    </form>
+</div>
+</body>
+</html>

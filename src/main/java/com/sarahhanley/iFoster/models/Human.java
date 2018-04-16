@@ -1,6 +1,12 @@
 package com.sarahhanley.iFoster.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,10 +16,17 @@ public class Human {
     @Id
     @GeneratedValue
     private int id;
+
+    @NotNull
+    @Size(min=3, max=50)
     private String firstName;
     private String lastName;
     private int phoneNumber;
     private GenderTypes gender;
+    private String email;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthday;
 
     @ManyToOne
     private Address address;
@@ -108,5 +121,21 @@ public class Human {
 
     public void setOwnedAnimals(ArrayList<Animal> ownedAnimals) {
         this.ownedAnimals = ownedAnimals;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

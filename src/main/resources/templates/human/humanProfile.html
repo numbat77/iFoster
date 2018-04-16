@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+
+<body>
+<div class="container">
+    <nav th:replace="fragments :: navigation"></nav>
+    <div class="page-header">
+        <h1 th:text="${title}">Default Title</h1>
+    </div>
+
+    <div class="container" th:object="${human}">
+        <ul>
+            <li th:text="*{firstName} + ' ' + *{lastName}">name</li>
+            <li th:text="*{birthday}">birthday</li>
+            <li th:text="*{phoneNumber}">phone</li>
+            <li th:text="*{email}">email</li>
+            <li th:text="*{gender}">gender</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
