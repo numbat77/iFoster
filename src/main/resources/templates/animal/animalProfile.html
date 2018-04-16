@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+
+<body>
+<div class="container">
+<nav th:replace="fragments :: navigation"></nav>
+<div class="page-header">
+    <h1 th:text="${title}">Default Title</h1>
+</div>
+
+<div class="container" th:object="${animal}">
+    <ul>
+        <li th:text="*{name}">name</li>
+        <li th:text="*{birthday}">birthday</li>
+        <li th:text="*{origin}">origin</li>
+        <li th:text="*{species}">species</li>
+        <li th:text="*{gender}">gender</li>
+        <li th:text="*{age}">age</li>
+    </ul>
+</div>
+</div>
+
+
+</body>
+</html>

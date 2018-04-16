@@ -35,8 +35,13 @@
     </div>
 
     <div class="form-group">
-    <Label th:for="altered">Spayed/Nutered</Label>
+    <label th:for="altered">Spayed/Nutered</label>
     <input type="checkbox" th:field="*{altered}"/>
+    </div>
+
+    <div class="form-group" data-provide="datepicker" data-date-format="mm-dd-yyyy">
+        <label th:for="birthday">Birthday </label>
+        <input type="date" th:field="*{birthday}" class="input-group-date">
     </div>
 
     <div class="form-group">

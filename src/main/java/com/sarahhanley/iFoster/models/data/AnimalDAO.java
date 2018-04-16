@@ -8,5 +8,4 @@ import javax.transaction.Transactional;
 
 @Repository
 @Transactional
-public interface AnimalDAO extends CrudRepository<Animal, Integer> {
-}
+public interface AnimalDAO extends CrudRepository<Animal, Integer> { }

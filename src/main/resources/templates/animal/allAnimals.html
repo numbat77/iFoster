@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+    <div class="container">
+        <nav th:replace="fragments :: navigation"></nav>
+    </div>
+        <div class="container">
+            <h1>Foster Animals</h1>
+    <p th:unless="${animals} and ${animals.size()}">no animals!</p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Species</th>
+                    <th>Origin</th>
+                    <th>Age</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="animal : ${animals}">
+                    <td><a th:href=" '/animal/animalProfile/' + ${animal.id}" th:text="${animal.name}">name</a></td>
+                    <td th:text="${animal.species}">species</td>
+                    <td th:text="${animal.origin}">Location</td>
+                    <td th:text="${animal.age}">Age</td>
+                    <td><button type="button" class="btn btn-link">Edit</button>
+                    <button type="button" class="btn btn-link">Delete</button></td>
+                </tr>
+                </tbody>
+            </table>
+
+
+        </div>
+</body>
+</html>

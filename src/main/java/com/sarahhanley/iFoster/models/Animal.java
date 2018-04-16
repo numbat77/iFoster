@@ -1,9 +1,11 @@
 package com.sarahhanley.iFoster.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -33,15 +35,20 @@ public class Animal {
     @ManyToMany(mappedBy = "animals")
     private List<Requirements> requirements;
 
-    private Date birthday;
+    @Column(name = "birthday")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthday;
     private String origin;
     private SpeciesType species;
+    private String age;
 
     public Animal() {}
 
     public Animal(String name) {
         this.name = name;
     }
+
+    public Animal(int id) {this.id = id;}
 
     public int getId() {
         return id;
@@ -57,6 +64,14 @@ public class Animal {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public LocalDate getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
     }
 
     public boolean isAdopted() {
@@ -83,14 +98,6 @@ public class Animal {
         this.altered = altered;
     }
 
-    public Date getBirthdate() {
-        return birthday;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthday = birthdate;
-    }
-
     public String getOrigin() {
         return origin;
     }
@@ -105,5 +112,10 @@ public class Animal {
 
     public void setSpecies(SpeciesType species) {
         this.species = species;
+    }
+
+    public String getAge() {
+        age = AgeCalc.calculateAge(birthday);
+        return age;
     }
 }

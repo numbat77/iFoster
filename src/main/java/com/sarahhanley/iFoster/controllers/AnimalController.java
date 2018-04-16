@@ -1,5 +1,6 @@
 package com.sarahhanley.iFoster.controllers;
 
+import com.sarahhanley.iFoster.models.AgeCalc;
 import com.sarahhanley.iFoster.models.Animal;
 import com.sarahhanley.iFoster.models.GenderTypes;
 import com.sarahhanley.iFoster.models.SpeciesType;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,7 +29,8 @@ public class AnimalController {
 
         model.addAttribute("animals", animalDAO.findAll());
         model.addAttribute("title", "Foster Animals");
-        return "animal/index";
+
+        return "animal/allAnimals";
     }
     //Request Path: /add
     @RequestMapping(value = "add", method = RequestMethod.GET)
@@ -44,5 +47,14 @@ public class AnimalController {
         animalDAO.save(newAnimal);
         return "redirect:";
 
+    }
+
+    @RequestMapping(value= "animalProfile/{animalId}", method=RequestMethod.GET)
+    public String viewAnimalProfile(@PathVariable int animalId, Model model) {
+        Animal animal = animalDAO.findById(animalId).get();
+        model.addAttribute(animal);
+        model.addAttribute("title", animal.getName());
+        model.addAttribute("age", AgeCalc.calculateAge(animal.getBirthday()));
+        return "animal/animalProfile";
     }
 }
